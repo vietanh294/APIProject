@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class HomeRequest {
-    private String categoryIde;
+    private Integer categoryIde;
     private String orderBy;
     private String vector;
 }

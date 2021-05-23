@@ -22,7 +22,7 @@ import java.util.List;
 
 @Controller
 //@RequestMapping(value = "/book")
-@RequestMapping(value = "/homePage")
+//@RequestMapping(value = "/homePage")
 public class HomeController {
 
     @Autowired
@@ -31,7 +31,7 @@ public class HomeController {
     CategoryRepository categoryRepository;
 //    @Autowired
 //    BookRepository bookRepository;
-    @GetMapping
+    @GetMapping(value = "/homePage")
     public String homePage(Model modelHomepage){
         List<BookEntity>  homeBookForms = bookRepository.findAll();
         List<CategoryEntity> cateItems = categoryRepository.findAll();
@@ -41,6 +41,22 @@ public class HomeController {
         return "homePage";
     }
 
+    @PostMapping(value = "/homePage")
+    public String homePage(Model modelHomepage,
+                           @ModelAttribute("homeRequest") HomeRequest homeRequest2){
+        List<BookEntity>  homeBookForms = new ArrayList<>();
+        if (homeRequest2.getCategoryIde() == null){
+            homeBookForms = bookRepository.findAll();
+        }else {
+            homeBookForms = bookRepository.findAllByCategoryId(homeRequest2.getCategoryIde());
+        }
+
+        List<CategoryEntity> cateItems = categoryRepository.findAll();
+        modelHomepage.addAttribute("homeRequest",new HomeRequest());
+        modelHomepage.addAttribute("homeBookForms", homeBookForms);
+        modelHomepage.addAttribute("categoyItems",cateItems);
+        return "homePage";
+    }
 //    @GetMapping(value ="/book" )
 
 //    @GetMapping(value = "/{category_id}")
