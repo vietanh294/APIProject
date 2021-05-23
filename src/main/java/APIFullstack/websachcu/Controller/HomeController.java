@@ -2,32 +2,41 @@ package APIFullstack.websachcu.Controller;
 
 import APIFullstack.websachcu.Controller.Request.AddBookRequest;
 import APIFullstack.websachcu.Controller.Request.UpdateBookRequest;
+import APIFullstack.websachcu.Controller.Response.BookForm;
 import APIFullstack.websachcu.Controller.Response.BookListResponse;
+import APIFullstack.websachcu.Controller.Response.HomeBookForm;
 import APIFullstack.websachcu.Entity.BookEntity;
+import APIFullstack.websachcu.Entity.CategoryEntity;
 import APIFullstack.websachcu.Repository.BookRepository;
+import APIFullstack.websachcu.Repository.CategoryRepository;
 import APIFullstack.websachcu.Service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.parser.Entity;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 //@RequestMapping(value = "/book")
-//@RequestMapping(value = "/home")
-public class BookControllerC {
+//@RequestMapping(value = "/homePage")
+public class HomeController {
 
     @Autowired
-    BookService bookService;
+    BookRepository bookRepository;
+    @Autowired
+    CategoryRepository categoryRepository;
 //    @Autowired
 //    BookRepository bookRepository;
-    @GetMapping(value ="/home" )
+    @GetMapping(value ="/homePage" )
     public String homePage(Model modelHomepage){
-
-
+        List<BookEntity>  homeBookForms = bookRepository.findAll();
+        List<CategoryEntity> cateItems = categoryRepository.findAll();
+        modelHomepage.addAttribute("homeBookForms", homeBookForms);
+        modelHomepage.addAttribute("categoyItems",cateItems);
         return "homePage";
-
     }
 
 //    @GetMapping(value ="/book" )

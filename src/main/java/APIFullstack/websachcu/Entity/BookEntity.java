@@ -3,6 +3,7 @@ package APIFullstack.websachcu.Entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Getter @Setter
 @Entity
@@ -25,5 +26,14 @@ public class BookEntity {
 
     @Column(name = "category_id")
     private  Integer categoryId;
+
+//    @Column(name = "book_year")
+//    private Date publishYear;
+//
+//    @Column(name = "book_description")
+//    private  String description;
+//
+//    @Column(name = "book_price")
+//    private  Integer price;
 
 }
