@@ -1,6 +1,7 @@
 package APIFullstack.websachcu.Controller;
 
 import APIFullstack.websachcu.Controller.Request.AddBookRequest;
+import APIFullstack.websachcu.Controller.Request.HomeRequest;
 import APIFullstack.websachcu.Controller.Request.UpdateBookRequest;
 import APIFullstack.websachcu.Controller.Response.BookForm;
 import APIFullstack.websachcu.Controller.Response.BookListResponse;
@@ -21,7 +22,7 @@ import java.util.List;
 
 @Controller
 //@RequestMapping(value = "/book")
-//@RequestMapping(value = "/homePage")
+@RequestMapping(value = "/homePage")
 public class HomeController {
 
     @Autowired
@@ -30,10 +31,11 @@ public class HomeController {
     CategoryRepository categoryRepository;
 //    @Autowired
 //    BookRepository bookRepository;
-    @GetMapping(value ="/homePage" )
+    @GetMapping
     public String homePage(Model modelHomepage){
         List<BookEntity>  homeBookForms = bookRepository.findAll();
         List<CategoryEntity> cateItems = categoryRepository.findAll();
+        modelHomepage.addAttribute("homeRequest",new HomeRequest());
         modelHomepage.addAttribute("homeBookForms", homeBookForms);
         modelHomepage.addAttribute("categoyItems",cateItems);
         return "homePage";

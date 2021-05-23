@@ -27,13 +27,13 @@ public class BookEntity {
     @Column(name = "category_id")
     private  Integer categoryId;
 
-//    @Column(name = "book_year")
-//    private Date publishYear;
-//
-//    @Column(name = "book_description")
-//    private  String description;
-//
-//    @Column(name = "book_price")
-//    private  Integer price;
+    @Column(name = "book_year")
+    private String publishYear;
+
+    @Column(name = "book_description")
+    private  String description;
+
+    @Column(name = "book_price")
+    private  Integer price;
 
 }

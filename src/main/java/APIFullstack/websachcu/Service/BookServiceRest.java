@@ -89,3 +89,21 @@
 //            return "OK";
 //        }
 //    }
+
+//public BookListResponse getBookByCategoryId(Integer cateId, String order, String orderBy, Integer pageNum){
+//
+//        Sort sort = Sort.by(Sort.Direction.ASC ,orderBy);
+//        if (order.equals("DESC")){
+//        sort =Sort.by(Sort.Direction.DESC,orderBy);
+//        }
+//        PageRequest pageRequest = PageRequest.of(pageNum,2,sort);
+//
+//
+//        BookListResponse response = new BookListResponse();
+////        List<BookEntity> data = bookRepository.findAllByCategoryId(cateId);
+//        List<BookEntity> data = bookRepository.findAllByCategoryId(cateId,pageRequest);
+//        response.setCode(200);
+//        response.setData(data);
+//        response.setMessage("Success");
+//        return response;
+//        }
