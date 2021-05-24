@@ -16,7 +16,7 @@ public class CategoryEntity {
     @Column(name = "category_id")
     private Integer cateId;
 
-    @Column(name = "name")
+    @Column(name = "category_name")
     private String categoryName;
 
 }
