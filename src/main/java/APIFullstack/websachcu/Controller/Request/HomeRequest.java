@@ -9,6 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class HomeRequest {
     private Integer categoryIde;
-    private String orderBy;
-    private String vector;
+    private String orderBy = "title";
+    private String vector = "ASC";
+    private Integer pageNumber = 0;
 }
