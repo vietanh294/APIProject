@@ -1,4 +1,4 @@
 package APIFullstack.websachcu.Service;
 
-public class BookService {
+public class PostBookService {
 }
