@@ -35,6 +35,6 @@ public interface BookRepository extends JpaRepository<BookEntity,Integer> {
     @Query(nativeQuery = true, value = "UPDATE book SET book_name = ?1 WHERE book_id = ?2 ")
     int updateBookByNativeModify(String title, Integer id);
 
-    @Query(nativeQuery = true,value = "SELECT book_id,book_name FROM book")
-    List<Object[]> getTitleAndId();
+//    @Query(nativeQuery = true,value = "SELECT book_id,book_name FROM book")
+//    List<Object[]> getTitleAndId();
 }

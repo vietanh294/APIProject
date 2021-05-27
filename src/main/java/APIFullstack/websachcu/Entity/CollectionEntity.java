@@ -14,5 +14,14 @@ public class CollectionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_collection_id")
-    private Integer ucolId;
+    private Integer colId;
+
+    @Column(name = "user_id")
+    private Integer userId;
+
+    @Column(name = "book_id")
+    private Integer bookId;
+
+    @Column(name = "user_collection_time")
+    private Integer colTime;
 }

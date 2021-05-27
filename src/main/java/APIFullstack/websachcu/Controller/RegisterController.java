@@ -26,6 +26,7 @@ public class RegisterController {
                                @ModelAttribute("registerRequest") RegisterRequest registerRequest){
         String runRegisterRequest = registerService.runRegisterService(registerRequest);
         modelRegisterPage.addAttribute("messageRegister", runRegisterRequest);
+
         return "register";
     }
 }

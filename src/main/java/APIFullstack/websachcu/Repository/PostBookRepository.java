@@ -1,4 +1,8 @@
 package APIFullstack.websachcu.Repository;
 
-public class PostBookRepository {
+import APIFullstack.websachcu.Entity.PostedBookEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PostBookRepository extends JpaRepository<PostedBookEntity,Integer> {
+
 }

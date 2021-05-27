@@ -46,7 +46,7 @@
                             <li class="nav-item"><a class="nav-link nav-link-item" href="./login">Login</a></li>
                             <li class="nav-item"><a class="nav-link" href="./register">Regiter</a></li>
                             <li class="nav-item"><a class="nav-link" href="#!">Post</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#!">Detail</a></li>
+                            <li class="nav-item"><a class="nav-link" href="./detailPage">Detail</a></li>
                             <li class="nav-item"><a class="nav-link" href="#!">User</a></li>
                         </ul>
                     </div>
@@ -85,8 +85,8 @@
                         </div>
                         <br><br>
                     </div>
-
-                    <form  class="d-flex justify-content-start align-items-center" th:action="@{/homePage}"
+<!--                    align-items-center-->
+                    <form  class="d-flex justify-content-start " th:action="@{/homePage}"
                          th:object="${homeRequest}" method="POST">
                         <input class="btn btn-outline-success"  type="submit" value="Tải trang" style="margin-bottom: 10px ;">
 
