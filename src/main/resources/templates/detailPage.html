@@ -117,8 +117,10 @@
                         </div>
                         <div class="testi_author">
                             <div class="a-desc">
-                                <h4 th:text="${detailBook.author}">Book Author</h4>
-                                <p>Chief Executive, Amazon</p>
+                                 <h4 th:text="${detailBook.author}">Book Author</h4> <br>
+                                <span>Xuất bản:  </span> <span th:text="${detailBook.publishYear}">Book year</span> <br>
+                                <span>Giá bán:  </span> <span th:text="${detailBook.price}">Book Price</span> <br>
+                                <span>Thể loại:  </span> <span th:text="${detailBook.categoryId}">Book categoryId</span> <br>
                             </div>
                         </div>
                     </div>
