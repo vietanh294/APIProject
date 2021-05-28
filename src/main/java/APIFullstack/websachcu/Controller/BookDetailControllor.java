@@ -3,6 +3,7 @@ package APIFullstack.websachcu.Controller;
 import APIFullstack.websachcu.Controller.Response.UserFormSignedIn;
 import APIFullstack.websachcu.Entity.BookEntity;
 import APIFullstack.websachcu.Repository.BookRepository;
+import APIFullstack.websachcu.Repository.CategoryRepository;
 import APIFullstack.websachcu.Service.PostBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,6 +19,8 @@ public class BookDetailControllor {
     BookRepository bookRepository;
     @Autowired
     UserFormSignedIn userFormSignedIn;
+    @Autowired
+    CategoryRepository categoryRepository;
 //    @Autowired
 //    PostBookService postBookService;
 //    @PathVariable("bookid") Integer bookId

@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -23,5 +24,5 @@ public class PostedBookEntity {
         private Integer bookId;
 
         @Column(name = "posted_time")
-        private Integer postedTime;
+        private Date postedTime;
 }
