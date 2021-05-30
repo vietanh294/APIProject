@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 public interface  CollectionRepository extends JpaRepository<CollectionEntity,Integer> {
-    List<CollectionEntity> findAllByUserId(Integer userId);
+    List<CollectionEntity> findAllByUserIdAndLikeStatus(Integer userId,Integer likeStatus);
 
     @Query(nativeQuery = true, value = "SELECT *  FROM user_collection WHERE user_id =:IdB limit 1")
     CollectionEntity findByNameParam(@Param("IdB") Integer userId);

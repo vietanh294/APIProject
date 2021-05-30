@@ -22,7 +22,8 @@ public class UserService {
 //    @Autowired
 //    UserRepository userRepository;
     public List<UserPageCollectionResponse> getUserPageCollection(Integer userId){
-        List<CollectionEntity> collectionList = collectionRepository.findAllByUserId(userId);
+        //Tim collection co userId va likestatus =1
+        List<CollectionEntity> collectionList = collectionRepository.findAllByUserIdAndLikeStatus(userId,1);
         List<BookEntity> bookList =new ArrayList<>();
         List<UserPageCollectionResponse> userPageCollectionResponseList =new ArrayList<>();
         for (CollectionEntity collectionItem :
