@@ -22,6 +22,7 @@ public interface BookRepository extends JpaRepository<BookEntity,Integer> {
     List<BookEntity> findAllByCategoryIdAndAuthor(Integer cateId, String author);
     List<BookEntity> findAll();
 //    List<CategoryEntity> findAll();
+    BookEntity findAllById(Integer bookId);
 
     @Query(nativeQuery = true, value = "SELECT * FROM book WHERE book_id =:IdB")
     BookEntity findByNameParam(@Param("IdB") Integer id);

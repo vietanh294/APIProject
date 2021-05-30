@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
+import java.sql.Date;
 
 @Getter @Setter
 @Entity
@@ -23,5 +24,8 @@ public class CollectionEntity {
     private Integer bookId;
 
     @Column(name = "user_collection_time")
-    private Integer colTime;
+    private String colTime;
+
+    @Column(name = "user_like_status")
+    private Integer likeStatus;
 }

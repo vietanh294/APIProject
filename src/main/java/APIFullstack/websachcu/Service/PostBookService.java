@@ -21,8 +21,9 @@ public class PostBookService {
     public String runPostBookService(PostBookRequest postBookRequest,Integer userid){
 //Check data
     if (postBookRequest.getTitle().isEmpty()
-    || postBookRequest.getAuthor().isEmpty()
-    || postBookRequest.getCategoryId()==null
+        || postBookRequest.getAuthor().isEmpty()
+        || postBookRequest.getCategoryId()==null
+            ||userid ==null
     ){
         return "bookPage";
     }
