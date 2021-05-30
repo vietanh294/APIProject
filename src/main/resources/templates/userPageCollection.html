@@ -45,7 +45,7 @@
                     <li class="nav-item"><a class="nav-link nav-link-item" href="../login">Login</a></li>
                     <li class="nav-item"><a class="nav-link" href="../register">Register</a></li>
                     <li class="nav-item"><a class="nav-link" href="../bookPage">Post</a></li>
-<!--                    <li class="nav-item"><a class="nav-link" href="../detailPage">Detail</a></li>-->
+                    <li class="nav-item"><a class="nav-link disabled" href="../detailPage">Detail</a></li>
                     <li class="nav-item"><a class="nav-link active" href="#!">User</a></li>
                 </ul>
             </div>
@@ -93,23 +93,23 @@
                                 </div>
                                 <div class="input-group form-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        <span class="input-group-text"><i class="fas fa-clock"></i></span>
                                     </div>
-                                    <h4 class="form-control" th:text="${userPageCollectionResponse.bookTitle}">PublishYear</h4>
+                                    <h4 class="form-control" th:text="${userPageCollectionResponse.publishYear}">PublishYear</h4>
                                 </div>
                             </div>
                             <div class="col-lg-6"style="padding: 0px; margin-right: 10px;">
                                 <div class="input-group form-group " >
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-book"></i></span>
+                                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                     </div>
                                     <h4 class="form-control" th:text="${userPageCollectionResponse.bookTitle}">Contact Phone</h4>
                                 </div>
                                 <div class="input-group form-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        <span class="input-group-text"><i class="fas fa-money-bill-wave"></i></span>
                                     </div>
-                                    <h4 class="form-control" th:text="${userPageCollectionResponse.bookTitle}">Price</h4>
+                                    <h4 class="form-control" th:text="${userPageCollectionResponse.bookPrice}">Price</h4>
                                 </div>
                             </div>
                         </div>

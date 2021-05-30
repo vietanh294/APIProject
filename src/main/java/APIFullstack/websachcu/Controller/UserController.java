@@ -40,9 +40,11 @@ public class UserController {
     @GetMapping(value = "/collection")
     public String userPageCollection(Model modelUserPageCollection){
         Integer userId = userFormSignedIn.getUserSignedId();
+        String userPhone =userFormSignedIn.getUserSignedPhone();
         List<UserPageCollectionResponse> userPageCollectionResponseList = userService.getUserPageCollection(userId);
         modelUserPageCollection.addAttribute("userPageCollectionRequest",new BookEntity());
         modelUserPageCollection.addAttribute("userPageCollectionResponseList",userPageCollectionResponseList);
+        modelUserPageCollection.addAttribute("userPhone",userPhone);
         return "userPageCollection";
     }
 }
