@@ -7,6 +7,7 @@ import lombok.Setter;
 @Getter @Setter
 @NoArgsConstructor
 public class UserPageCollectionResponse {
+    private Integer bookId;
     private String bookTitle;
     private String publishYear;
     private String userPostedPhone;

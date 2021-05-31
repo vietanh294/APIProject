@@ -41,8 +41,8 @@ public class PostBookController {
    @PostMapping
    public String postBookPage(Model modelPostBook,
                               @ModelAttribute("postBookRequests") PostBookRequest postBookRequest){
-      Integer id = userFormSignedIn.getUserSignedId();
-      String runPostBookRequest = postBookService.runPostBookService(postBookRequest,id);
+      Integer userId = userFormSignedIn.getUserSignedId();
+      String runPostBookRequest = postBookService.runPostBookService(postBookRequest,userId);
       List<CategoryEntity> listCategory = categoryRepository.findAll();
       modelPostBook.addAttribute("listCategory",listCategory);
       modelPostBook.addAttribute("postBookRequests",postBookRequest);

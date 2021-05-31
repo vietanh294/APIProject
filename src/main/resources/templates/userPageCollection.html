@@ -81,7 +81,7 @@
                 </div>
                 <div class="card-body col-lg-9 col-md-6 mb-4 " style="padding-top: 0px;">
                     <form th:action="@{/userPage/collection}"
-                          th:object="${userPageCollectionRequest}" method="POST">
+                          th:object="${userPageCollectionRequest}" method="PUT">
 <!--                        <div class="d-flex justify-content-start align-items-center" th:each ="userPageCollectionItem : ${userPageCollectionResponse}">-->
                         <div class="d-flex justify-content-start align-items-center" >
                             <div class="col-lg-6"style="padding: 0px; margin-right: 10px;">
@@ -103,7 +103,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                     </div>
-                                    <h4 class="form-control" th:text="${userPageCollectionResponse.bookTitle}">Contact Phone</h4>
+                                    <h4 class="form-control" th:text="${userPageCollectionResponse.userPostedPhone}">Contact Phone</h4>
                                 </div>
                                 <div class="input-group form-group">
                                     <div class="input-group-prepend">
@@ -130,6 +130,12 @@
 
                             <div class="form-group">
                                 <input type="submit" value="BỎ THÍCH" class="btn btn-outline-primary">
+<!--                                <input th:if="${person.gender} == 'M'" th:text="Male"-->
+<!--                                       type="submit" value="BỎ THÍCH" class="btn btn-outline-primary">-->
+<!--                                <span th:if="${person.gender} == 'M'" th:text="Male" />-->
+<!--                                th:field="*{bookId}" th:value = "${userPageCollectionResponse.bookId"-->
+<!--                                <span th:unless="${person.gender} == 'M'" th:text="Female" />-->
+
                             </div>
 
                     </form>

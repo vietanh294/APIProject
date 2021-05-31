@@ -24,7 +24,7 @@ public class CollectionEntity {
     private Integer bookId;
 
     @Column(name = "user_collection_time")
-    private String colTime;
+    private Date colTime;
 
     @Column(name = "user_like_status")
     private Integer likeStatus;

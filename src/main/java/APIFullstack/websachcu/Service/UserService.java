@@ -3,9 +3,12 @@ package APIFullstack.websachcu.Service;
 import APIFullstack.websachcu.Controller.Response.UserPageCollectionResponse;
 import APIFullstack.websachcu.Entity.BookEntity;
 import APIFullstack.websachcu.Entity.CollectionEntity;
+import APIFullstack.websachcu.Entity.PostedBookEntity;
 import APIFullstack.websachcu.Repository.BookRepository;
 import APIFullstack.websachcu.Repository.CollectionRepository;
 
+import APIFullstack.websachcu.Repository.PostBookRepository;
+import APIFullstack.websachcu.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +22,10 @@ public class UserService {
     BookRepository bookRepository;
     @Autowired
     CollectionRepository collectionRepository;
-//    @Autowired
-//    UserRepository userRepository;
+    @Autowired
+    UserRepository userRepository;
+    @Autowired
+    PostBookRepository postBookRepository;
     public List<UserPageCollectionResponse> getUserPageCollection(Integer userId){
         //Tim collection co userId va likestatus =1
         List<CollectionEntity> collectionList = collectionRepository.findAllByUserIdAndLikeStatus(userId,1);
@@ -33,13 +38,15 @@ public class UserService {
             userPageCollectionResponseItem.setBookTitle(bookItem.getTitle());
             userPageCollectionResponseItem.setPublishYear(bookItem.getPublishYear());
             userPageCollectionResponseItem.setBookPrice(bookItem.getPrice());
+            userPageCollectionResponseItem.setBookId(bookItem.getId());
+            PostedBookEntity userPostedBook = postBookRepository.findAllByBookId(bookItem.getId());
+            String userPostedPhone ="No Contact!";
+            if (userPostedBook != null){
+                userPostedPhone = userRepository.findUserPhoneByNativeQuery(userPostedBook.getUserId());
+            }
+            userPageCollectionResponseItem.setUserPostedPhone(userPostedPhone);
             userPageCollectionResponseList.add(userPageCollectionResponseItem);
         }
-//        BookEntity bookItem = bookRepository.findAllById(collectionItem.getBookId());
-//        UserPageCollectionResponse userPageCollectionResponseItem = new UserPageCollectionResponse();
-//        userPageCollectionResponseItem.setBookTitle(bookItem.getTitle());
-//        userPageCollectionResponseItem.setPublishYear(bookItem.getPublishYear());
-//        userPageCollectionResponseItem.setBookPrice(bookItem.getPrice());
         return userPageCollectionResponseList;
     }
 
