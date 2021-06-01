@@ -68,69 +68,79 @@
         </ul>
     </section>
     <section class="container">
-<!--        <div class="container" style="margin-top: 40px;">-->
-<!--            <Span class="text-secondary" style="font-size: 20px; font-family: Arial, Helvetica, sans-serif; font-weight: 500;">Đăng sách ở đây !</Span>-->
-<!--        </div>-->
-<!--        <div class="container" style="border-top: aquamarine 1px solid ;">-->
-            <!-- Page Features-->
-            <div class="row text-center mt-4 d-flex align-items-center"  >
-                <div class="col-lg-3 col-md-6 mb-4 card-iitem" >
-                    <div class="card ">
-                        <img class="card-img-top" src="https://file1.dangcongsan.vn/DATA/0/2018/10/68___gi%E1%BA%BFng_l%C3%A0ng_qu%E1%BA%A3ng_ph%C3%BA_c%E1%BA%A7u__%E1%BB%A9ng_h%C3%B2a___%E1%BA%A3nh_vi%E1%BA%BFt_m%E1%BA%A1nh-16_51_07_908.jpg" alt="..." />
-<!--                        <div class="card-footer"><a class="btn btn-outline-primary"  >Đăng ảnh</a></div>-->
-                    </div>
-                </div>
-                <!--                <div class="col-lg-3 col-md-6 mb-4 card-iitem" th:each ="postBookForm : ${postBookForms}">-->
-                <!--                    <div class="card h-100">-->
-                <!--                        <img class="card-img-top" src="https://file1.dangcongsan.vn/DATA/0/2018/10/68___gi%E1%BA%BFng_l%C3%A0ng_qu%E1%BA%A3ng_ph%C3%BA_c%E1%BA%A7u__%E1%BB%A9ng_h%C3%B2a___%E1%BA%A3nh_vi%E1%BA%BFt_m%E1%BA%A1nh-16_51_07_908.jpg" alt="..." />-->
-                <!--                        <div class="card-body">-->
-                <!--                            <h4 class="card-title" th:text="${postBookForm.title}">Card title</h4>-->
-                <!--                            <p class="card-text" th:text="${postBookForm.author}">Tác giả</p>-->
-                <!--                        </div>-->
-                <!--                        <div class="card-footer"><a class="btn btn-outline-primary" th:href="@{./detailPage(id=1)}" >Chi tiết Sách!</a></div>-->
-                <!--                    </div>-->
-                <!--                </div>-->
-                <div class="card-body col-lg-9 col-md-6 mb-4 " style="padding-top: 0px;">
-                    <form th:action="@{/userPage/posted}"
-                          th:object="${userPagePortedRequest}" method="POST">
+        <!--        <div class="container" style="margin-top: 40px;">-->
+        <!--            <Span class="text-secondary" style="font-size: 20px; font-family: Arial, Helvetica, sans-serif; font-weight: 500;">Đăng sách ở đây !</Span>-->
+        <!--        </div>-->
+        <!--        <div class="container" style="border-top: aquamarine 1px solid ;">-->
+        <!-- Page Features-->
+        <div class="row text-center mt-4 d-flex align-items-center">
 
-                        <div class="d-flex justify-content-start align-items-center">
-                            <div class="col-lg-6"style="padding: 0px; margin-right: 10px;">
-                                <div class="input-group form-group " >
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Title</span>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="title. . ." field="test title tieu de" value="Test viet ten tieu de">
-
-                                </div>
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Publish</i></span>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="author . . ." th:field="*{author}" value="Test viet ten tieu de o value">
-                                </div>
-                            </div>
-                            <div class="col-lg-6"style="padding: 0px;margin-right: 10px;">
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Posted</span>
-                                    </div>
-                                    <input type="number" class="form-control" placeholder="publishYear . . ." value="Test viet ten tieu de o value" th:field="*{publishYear}">
-                                </div>
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Price</span>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="description . . ." th:field="*{description}">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="LƯU" class="btn btn-outline-primary">
-                        </div>
-                    </form>
+<!--        <div class="row text-center mt-4 d-flex align-items-center" th:each="userPageCollectionResponse: ${userPageCollectionResponseList}" method="GET" >-->
+            <div class="col-lg-3 col-md-6 mb-4 card-iitem" >
+                <div class="card">
+                    <img class="card-img-top" src="https://static.wikia.nocookie.net/forgottenrealms/images/c/c3/Ship.jpg" alt="..." />
+                    <!--                        <div class="card-footer"><a class="btn btn-outline-primary"  >Đăng ảnh</a></div>-->
                 </div>
             </div>
+            <div class="card-body col-lg-9 col-md-6 mb-4 " style="padding-top: 0px;">
+                <form>
+<!--                <form id="collectionForm" th:action="@{/userPage/collection}"-->
+                      th:object="${userPageCollectionRequest}" method="PUT">
+                    <!--                        <div class="d-flex justify-content-start align-items-center" th:each ="userPageCollectionItem : ${userPageCollectionResponse}">-->
+                    <div class="d-flex justify-content-start align-items-center" >
+                        <div class="col-lg-6"style="padding: 0px; margin-right: 10px;">
+                            <div class="input-group form-group " >
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Tiêu đề sách</span>
+                                </div>
+<!--                                <h4 class="form-control" th:text="${userPageCollectionResponse.bookTitle}">Book title</h4>-->
+                            </div>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Năm Phát Hành</i></span>
+                                </div>
+<!--                                <h4 class="form-control" th:text="${userPageCollectionResponse.publishYear}">PublishYear</h4>-->
+                            </div>
+                        </div>
+                        <div class="col-lg-6"style="padding: 0px; margin-right: 10px;">
+                            <div class="input-group form-group " >
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Ngày Đăng</i></span>
+                                </div>
+<!--                                <h4 class="form-control" th:text="${userPageCollectionResponse.userPostedPhone}">Contact Phone</h4>-->
+                            </div>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Giá</i></span>
+                                </div>
+<!--                                <h4 class="form-control" th:text="${userPageCollectionResponse.bookPrice}">Price</h4>-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--                            <div class="col-lg-6"style="padding: 0px; margin-right: 10px;">-->
+                    <!--                                <div class="input-group form-group">-->
+                    <!--                                    <div class="input-group-prepend">-->
+                    <!--                                        <span class="input-group-text"><i class="fas fa-key"></i></span>-->
+                    <!--                                    </div>-->
+                    <!--                                    <input type="number" class="form-control" placeholder="publishYear . . ." th:field="*{publishYear}">-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+
+                    <div class="form-group">
+                        <input type="submit" value="LƯU" class="btn btn-outline-primary">
+<!--                                                        <input th:if="${person.gender} == 'M'" th:text="Male"-->
+<!--                                                               type="submit" value="BỎ THÍCH" class="btn btn-outline-primary">-->
+<!--                                                        <span th:if="${person.gender} == 'M'" th:text="Male" />-->
+<!--                                                        th:field="*{bookId}" th:value = "${userPageCollectionResponse.bookId"-->
+<!--                                                        <span th:unless="${person.gender} == 'M'" th:text="Female" />-->
+<!--                        <input type="checkbox" checked data-on="BỎ THÍCH" data-off="THÍCH" data-toggle="toggle" data-onstyle="success" data-offstyle="danger">-->
+<!--                                                        <input type="checkbox" onchange="autoSubmitFunction()"  class="btn-check" name="options-outlined" th:id="'primary-outlined'+${categoyItem.cateId}" autocomplete="off" th:field="*{categoryIde}" th:value="${categoyItem.cateId}">-->
+<!--                                                        <label  class="btn btn-outline-primary" th:for="'primary-outlined'+${categoyItem.cateId}" >BỎ THÍCH</label>-->
+                    </div>
+
+                </form>
+            </div>
+        </div>
         </div>
     </section>
 </main>

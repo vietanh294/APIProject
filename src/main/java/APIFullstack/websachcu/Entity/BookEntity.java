@@ -35,5 +35,6 @@ public class BookEntity {
 
     @Column(name = "book_price")
     private  Integer price;
-
+//    @Column(name = "book_contact")
+//    private  String contact;
 }

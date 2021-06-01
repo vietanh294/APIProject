@@ -36,6 +36,7 @@ public class PostBookService {
     bookEntity.setPicture(postBookRequest.getPicture());
     bookEntity.setPublishYear(postBookRequest.getPublishYear());
     bookEntity.setPrice(postBookRequest.getPrice());
+//    bookEntity.setContact(userphone);
     bookEntity = bookRepository.save(bookEntity);
     String returnString = "redirect:/detailPage?id=" + bookEntity.getId();
     // Save PostedBook Table

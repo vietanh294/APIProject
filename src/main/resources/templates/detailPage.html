@@ -16,21 +16,6 @@
     <link th:href="@{css/styles.css}" rel="stylesheet" />
     <link rel="stylesheet"  th:href="@{css/home.css}">
     <link rel="stylesheet"  th:href="@{css/bootstrap.css}">
-
-    <!-- Bootstrap CSS -->
-<!--    <link rel="stylesheet" href="css/bootstrap.css">-->
-<!--    <link rel="stylesheet" href="vendors/linericon/style.css">-->
-<!--    <link rel="stylesheet" href="css/font-awesome.min.css">-->
-<!--    <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">-->
-<!--    <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">-->
-<!--    <link rel="stylesheet" href="vendors/animate-css/animate.css">-->
-<!--    <link rel="stylesheet" href="vendors/jquery-ui/jquery-ui.css">-->
-<!--    <link rel="stylesheet" href="vendors/popup/magnific-popup.css">-->
-<!--    <link rel="stylesheet" href="vendors/swiper/css/swiper.min.css">-->
-<!--    <link rel="stylesheet" href="vendors/scroll/jquery.mCustomScrollbar.css">-->
-<!--    &lt;!&ndash; main css &ndash;&gt;-->
-<!--    <link rel="stylesheet" href="css/style.css">-->
-
 </head>
 <body>
 <header>
@@ -69,6 +54,11 @@
     <!--================ Book Detail: =================-->
     <section>
         <div class="container">
+            <div class="d-flex justify-content-end align-items-center mt-3 mb-1">
+                    <span class="mr-5"><a class="btn btn-outline-secondary" href="./homePage">Trang Chủ</a></span>
+                    <span class="mr-5"><a class="btn btn-outline-secondary" href="./bookPage">Đăng Sách</a> </span>
+                    <span class="btn btn-outline-secondary" th:text="${userPostedPhone}">Contact</span>
+            </div>
             <div class="row align-items-center" th:action="@{/detailPage}" th:object="${detailBook}" method="GET">
                 <div class="col-lg-6">
                     <div class="testi_img" style="margin: 20px;">
@@ -94,7 +84,7 @@
                                  <h4 th:text="${detailBook.author}">Book Author</h4> <br>
                                 <span>Xuất bản:  </span> <span th:text="${detailBook.publishYear}">Book year</span> <br>
                                 <span>Giá bán:  </span> <span th:text="${detailBook.price}">Book Price</span> <br>
-                                <span>Thể loại:  </span> <span th:text="${detailBook.categoryId}">Book categoryId</span> <br>
+                                <span>Thể loại:  </span> <span th:text="${categoryName}">Book categoryId</span> <br>
                             </div>
                         </div>
                     </div>

@@ -38,11 +38,11 @@ public class PostBookController {
    public String postBookPage(Model modelPostBook,
                               @ModelAttribute("postBookRequests") PostBookRequest postBookRequest){
       Integer userId = userFormSignedIn.getUserSignedId();
+      String userPhone =userFormSignedIn.getUserSignedPhone();
       String runPostBookRequest = postBookService.runPostBookService(postBookRequest,userId);
       List<CategoryEntity> listCategory = categoryRepository.findAll();
       modelPostBook.addAttribute("listCategory",listCategory);
       modelPostBook.addAttribute("postBookRequests",postBookRequest);
-      String userPhone = userFormSignedIn.getUserSignedPhone();
       modelPostBook.addAttribute("userPhone",userPhone);
 //      if (runPostBookRequest ="bookPage"){
 //         String message = "Thiếu thông tin đăng sách";
