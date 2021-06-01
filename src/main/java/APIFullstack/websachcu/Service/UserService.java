@@ -1,6 +1,7 @@
 package APIFullstack.websachcu.Service;
 
 import APIFullstack.websachcu.Controller.Response.UserPageCollectionResponse;
+import APIFullstack.websachcu.Controller.Response.UserPagePostedResponse;
 import APIFullstack.websachcu.Entity.BookEntity;
 import APIFullstack.websachcu.Entity.CollectionEntity;
 import APIFullstack.websachcu.Entity.PostedBookEntity;
@@ -28,8 +29,8 @@ public class UserService {
     PostBookRepository postBookRepository;
     public List<UserPageCollectionResponse> getUserPageCollection(Integer userId){
         //Tim collection co userId va likestatus =1
+//        List<BookEntity> bookList =new ArrayList<>();
         List<CollectionEntity> collectionList = collectionRepository.findAllByUserIdAndLikeStatus(userId,1);
-        List<BookEntity> bookList =new ArrayList<>();
         List<UserPageCollectionResponse> userPageCollectionResponseList =new ArrayList<>();
         for (CollectionEntity collectionItem :
                 collectionList) {
@@ -48,6 +49,22 @@ public class UserService {
             userPageCollectionResponseList.add(userPageCollectionResponseItem);
         }
         return userPageCollectionResponseList;
+    }
+    public List<UserPagePostedResponse> UserPagePosted(Integer userId){
+        List<PostedBookEntity> postedBookList =postBookRepository.findAllByUserId(userId);
+        List<UserPagePostedResponse> userPagePostedResponseList =new ArrayList<>();
+        for (PostedBookEntity item :
+                postedBookList) {
+            BookEntity bookItem = bookRepository.findAllById(item.getBookId());
+            UserPagePostedResponse responseElement =new UserPagePostedResponse();
+            responseElement.setBookId(bookItem.getId());
+            responseElement.setPostedDate(item.getPostedTime());
+            responseElement.setBookPrice(bookItem.getPrice());
+            responseElement.setBookTitle(bookItem.getTitle());
+            responseElement.setPublishYear(bookItem.getPublishYear());
+            userPagePostedResponseList.add(responseElement);
+        }
+        return userPagePostedResponseList;
     }
 
 }

@@ -4,13 +4,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Date;
+
 @Getter
 @Setter
 @NoArgsConstructor
 public class UserPagePostedResponse {
+    private Integer bookId;
     private String bookTitle;
     private String publishYear;
-    private String postedDate;
-    private String bookPrice;
+    private Date postedDate;
+    private Integer bookPrice;
     private String bookPicture;
 }

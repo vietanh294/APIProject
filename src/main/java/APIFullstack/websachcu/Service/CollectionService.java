@@ -14,10 +14,10 @@ public class CollectionService {
         if (userId ==null || bookId ==null){
             return 0;
         }
-        CollectionEntity collectionEntity = collectionRepository.findByNameParamUserAndBookId(userId, bookId);
-        Integer likeStatus =collectionEntity.getLikeStatus();
-        likeStatus = Math.abs(likeStatus-1);
-        collectionEntity.setLikeStatus(likeStatus);
+        CollectionEntity collectionEntity = collectionRepository.findByNativeQueryUserAndBookId(userId, bookId);
+//        Integer likeStatus =collectionEntity.getLikeStatus();
+//        likeStatus = Math.abs(likeStatus-1);
+        collectionEntity.setLikeStatus(0);
         collectionEntity = collectionRepository.save(collectionEntity);
         return collectionEntity.getLikeStatus();
     }
