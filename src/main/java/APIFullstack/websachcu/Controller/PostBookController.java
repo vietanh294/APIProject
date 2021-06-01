@@ -27,10 +27,6 @@ public class PostBookController {
    PostBookService postBookService;
    @GetMapping
     public String getPostBookPage(Model modelPostBookPage){
-//       List<BookEntity> postBookForms =null;
-//       PostBookRequest postBookRequests = new PostBookRequest();
-//       modelPostBookPage.addAttribute("postBookForms",postBookForms);
-
        List<CategoryEntity> listCategory = categoryRepository.findAll();
        modelPostBookPage.addAttribute("listCategory",listCategory);
        modelPostBookPage.addAttribute("postBookRequests",new PostBookRequest());

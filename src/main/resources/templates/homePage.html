@@ -17,18 +17,11 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link th:href="@{css/styles.css}" rel="stylesheet" />
         <link rel="stylesheet"  th:href="@{css/home.css}">
-<!--                Jquery-->
-<!--        <script >-->
-<!--        $(document).ready(function() {-->
-<!--        $('input[name=options-outlined]').change(function(){-->
-<!--        document.getElementById("myForm").submit();-->
-<!--        });-->
-<!--        });-->
-<!--        </script>-->
+
         <!--   Auto Submit Onchange Script....   onclick-->
         <script>
-             function myFunction() {
-                document.getElementById("myForm").submit();
+             function categoryFunction() {
+                document.getElementById("categoryForm").submit();
              }
         </script>
         <!--                onclick-->
@@ -85,10 +78,10 @@
                     </div>
 <!--                    align-items-center-->
                     <div class="container">
-                    <form  id="myForm" class="d-flex justify-content-start align-items-center flex-wrap" th:action="@{/homePage}"
+                    <form  id="categoryForm" class="d-flex justify-content-start align-items-center flex-wrap" th:action="@{/homePage}"
                          th:object="${homeRequest}" method="POST">
                         <div style="margin-left: 5px;" th:each ="categoyItem : ${categoyItems}">
-                            <input type="radio" onchange="myFunction()"  class="btn-check" name="options-outlined" th:id="'primary-outlined'+${categoyItem.cateId}" autocomplete="off" th:field="*{categoryIde}" th:value="${categoyItem.cateId}">
+                            <input type="radio" onchange="categoryFunction()"  class="btn-check" name="options-outlined" th:id="'primary-outlined'+${categoyItem.cateId}" autocomplete="off" th:field="*{categoryIde}" th:value="${categoyItem.cateId}">
                             <label  class="btn btn-outline-primary" th:for="'primary-outlined'+${categoyItem.cateId}" th:text="${categoyItem.categoryName}">Toán học</label>
                         </div>
                     </form>

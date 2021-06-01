@@ -20,6 +20,13 @@
     <!--    <style>-->
     <!--    .input-group-text{width: 50px;display: flex; justify-content: center;}-->
     <!--    </style>-->
+    <!--   Auto Submit Onchange Script....   onclick-->
+    <script>
+             function autoSubmitFunction() {
+                document.getElementById("collectionForm").submit();
+             }
+    </script>
+    <!--                onclick-->
 </head>
 <body>
 <header>
@@ -80,7 +87,7 @@
                     </div>
                 </div>
                 <div class="card-body col-lg-9 col-md-6 mb-4 " style="padding-top: 0px;">
-                    <form th:action="@{/userPage/collection}"
+                    <form id="collectionForm" th:action="@{/userPage/collection}"
                           th:object="${userPageCollectionRequest}" method="PUT">
 <!--                        <div class="d-flex justify-content-start align-items-center" th:each ="userPageCollectionItem : ${userPageCollectionResponse}">-->
                         <div class="d-flex justify-content-start align-items-center" >
@@ -120,12 +127,6 @@
 <!--                                    </div>-->
 <!--                                    <input type="number" class="form-control" placeholder="publishYear . . ." th:field="*{publishYear}">-->
 <!--                                </div>-->
-<!--                                <div class="input-group form-group">-->
-<!--                                    <div class="input-group-prepend">-->
-<!--                                        <span class="input-group-text"><i class="fas fa-key"></i></span>-->
-<!--                                    </div>-->
-<!--                                    <input type="text" class="form-control" placeholder="description . . ." th:field="*{description}">-->
-<!--                                </div>-->
 <!--                            </div>-->
 
                             <div class="form-group">
@@ -135,7 +136,9 @@
 <!--                                <span th:if="${person.gender} == 'M'" th:text="Male" />-->
 <!--                                th:field="*{bookId}" th:value = "${userPageCollectionResponse.bookId"-->
 <!--                                <span th:unless="${person.gender} == 'M'" th:text="Female" />-->
-
+                                <input type="checkbox" checked data-on="BỎ THÍCH" data-off="THÍCH" data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+<!--                                <input type="checkbox" onchange="autoSubmitFunction()"  class="btn-check" name="options-outlined" th:id="'primary-outlined'+${categoyItem.cateId}" autocomplete="off" th:field="*{categoryIde}" th:value="${categoyItem.cateId}">-->
+<!--                                <label  class="btn btn-outline-primary" th:for="'primary-outlined'+${categoyItem.cateId}" >BỎ THÍCH</label>-->
                             </div>
 
                     </form>

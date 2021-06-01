@@ -16,4 +16,7 @@ public interface  CollectionRepository extends JpaRepository<CollectionEntity,In
     @Query(nativeQuery = true, value = "SELECT *  FROM user_collection WHERE user_id =:IdB limit 1")
     CollectionEntity findByNameParam(@Param("IdB") Integer userId);
 
+    @Query(nativeQuery = true, value = "SELECT *  FROM user_collection WHERE user_id =:UserId and book_id =:BookId ")
+    CollectionEntity findByNameParamUserAndBookId(@Param("UserId") Integer userId,@Param("BookId") Integer bookId);
+
 }

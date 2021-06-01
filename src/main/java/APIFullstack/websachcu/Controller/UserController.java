@@ -53,11 +53,11 @@ public class UserController {
     @PutMapping(value = "/collection")
     public String userUnlikeBookCollection(Model modelUserUnlikeBookCollection,
                                            @ModelAttribute("userPageCollectionRequest")CollectionEntity collectionEntity,
-                                           @ModelAttribute("userPageCollectionResponseList")List<UserPageCollectionResponse> userPageCollectionResponseList,
+//                                           @ModelAttribute("userPageCollectionResponseList")List<UserPageCollectionResponse> userPageCollectionResponseList,
                                            @ModelAttribute("userPhone")String userPhone){
 
         modelUserUnlikeBookCollection.addAttribute("userPageCollectionRequest",new CollectionEntity());
-        modelUserUnlikeBookCollection.addAttribute("userPageCollectionResponseList",userPageCollectionResponseList);
+//        modelUserUnlikeBookCollection.addAttribute("userPageCollectionResponseList",userPageCollectionResponseList);
         modelUserUnlikeBookCollection.addAttribute("userPhone",userPhone);
         return "userPageCollection";
     }

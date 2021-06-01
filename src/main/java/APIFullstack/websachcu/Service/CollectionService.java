@@ -10,8 +10,15 @@ public class CollectionService {
 
     @Autowired
     CollectionRepository collectionRepository;
-    public String runUnlikeAndLikeStatus(Integer userId, Integer bookId){
-
-        return "";
+    public Integer runUnlikeAndLikeStatus(Integer userId, Integer bookId){
+        if (userId ==null || bookId ==null){
+            return 0;
+        }
+        CollectionEntity collectionEntity = collectionRepository.findByNameParamUserAndBookId(userId, bookId);
+        Integer likeStatus =collectionEntity.getLikeStatus();
+        likeStatus = Math.abs(likeStatus-1);
+        collectionEntity.setLikeStatus(likeStatus);
+        collectionEntity = collectionRepository.save(collectionEntity);
+        return collectionEntity.getLikeStatus();
     }
 }
