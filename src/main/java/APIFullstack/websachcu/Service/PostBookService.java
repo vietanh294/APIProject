@@ -29,12 +29,12 @@ public class PostBookService {
     }
     // Lưu sách
     BookEntity bookEntity =new BookEntity();
-    bookEntity.setTitle(postBookRequest.getTitle());
-    bookEntity.setAuthor(postBookRequest.getAuthor());
+    bookEntity.setTitle(postBookRequest.getTitle().trim());
+    bookEntity.setAuthor(postBookRequest.getAuthor().trim());
     bookEntity.setCategoryId(postBookRequest.getCategoryId());
-    bookEntity.setDescription(postBookRequest.getDescription());
-    bookEntity.setPicture(postBookRequest.getPicture());
-    bookEntity.setPublishYear(postBookRequest.getPublishYear());
+    bookEntity.setDescription(postBookRequest.getDescription().trim());
+    bookEntity.setPicture(postBookRequest.getPicture().trim());
+    bookEntity.setPublishYear(postBookRequest.getPublishYear().trim());
     bookEntity.setPrice(postBookRequest.getPrice());
 //    bookEntity.setContact(userphone);
     bookEntity = bookRepository.save(bookEntity);

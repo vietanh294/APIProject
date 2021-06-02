@@ -44,9 +44,11 @@ public class PostBookController {
       modelPostBook.addAttribute("listCategory",listCategory);
       modelPostBook.addAttribute("postBookRequests",postBookRequest);
       modelPostBook.addAttribute("userPhone",userPhone);
-//      if (runPostBookRequest ="bookPage"){
-//         String message = "Thiếu thông tin đăng sách";
-//      }
+      String messageBookPage =null;
+      if (runPostBookRequest =="bookPage"){
+         messageBookPage = "Thiếu thông tin đăng sách";
+      }
+      modelPostBook.addAttribute("messageBookPage",messageBookPage);
       return runPostBookRequest;
    }
 }

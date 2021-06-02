@@ -10,6 +10,6 @@ import lombok.Setter;
 public class HomeRequest {
     private Integer categoryIde;
     private String orderBy = "title";
-    private String vector = "ASC";
+    private String direction = "ASC";
     private Integer pageNumber = 0;
 }
