@@ -48,7 +48,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>VietAnh3</finalName>
+		<finalName>VietAnh4</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

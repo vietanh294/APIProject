@@ -1,5 +1,6 @@
 package APIFullstack.websachcu.Controller;
 
+import APIFullstack.websachcu.Controller.Request.UserPasswordInfoRequest;
 import APIFullstack.websachcu.Controller.Response.UserFormSignedIn;
 import APIFullstack.websachcu.Controller.Response.UserPageCollectionResponse;
 import APIFullstack.websachcu.Controller.Response.UserPagePostedResponse;
@@ -25,18 +26,27 @@ public class UserController {
     UserFormSignedIn userFormSignedIn;
     @Autowired
     CollectionService collectionService;
-
+//  Tab Thông tin
     @GetMapping(value = "/info")
     public String userPageInfo(Model modelUserPageInfo){
-        modelUserPageInfo.addAttribute("userPageInfoRequest",new UserEntity());
         String userPhone =userFormSignedIn.getUserSignedPhone();
         modelUserPageInfo.addAttribute("userPhone",userPhone);
+        String userEmail =userFormSignedIn.getUserSignedEmail();
+        UserEntity userEntity =new UserEntity();
+        userEntity.setUserPhone(userPhone);
+        userEntity.setUserEmail(userEmail);
+        modelUserPageInfo.addAttribute("userPageInfoRequest",userEntity);
+        modelUserPageInfo.addAttribute("userPasswordInfoRequest", new UserPasswordInfoRequest());
         return "userPageInfo";
     }
     @GetMapping
     public String userPageInfo2(Model modelUserPageInfo2){
         return "redirect:/userPage/info";
     }
+//    @PutMapping(value = "/info")
+//    public String putUserPageInfoRequest()
+
+    //    Tab SÁCH ĐÃ ĐĂNG
     @GetMapping(value = "/posted")
     public String userPagePosted(Model modelUserPagePosted){
         modelUserPagePosted.addAttribute("userPagePortedRequest",new BookEntity());
@@ -47,6 +57,8 @@ public class UserController {
         modelUserPagePosted.addAttribute("userPhone",userPhone);
         return "userPagePosted";
     }
+
+//    TAB SÁCH YÊU THÍCH
     @GetMapping(value = "/collection")
     public String userPageCollection(Model modelUserPageCollection){
         Integer userId = userFormSignedIn.getUserSignedId();

@@ -67,70 +67,81 @@
         </ul>
     </section>
     <section class="container">
-        <div class="card ">
+        <div class="card">
             <div class="card-header">
-                <h3>User Infomation</h3>
+                <h3>Thông tin Cá nhân</h3>
 <!--                <div class="d-flex justify-content-end social_icon">-->
 <!--                    <span><i class="fab fa-facebook-square"></i></span>-->
 <!--                    <span><i class="fab fa-google-plus-square"></i></span>-->
 <!--                    <span><i class="fab fa-twitter-square"></i></span>-->
 <!--                </div>-->
             </div>
-            <div class="card-body">
+            <div class="card-body" >
                 <form th:action="@{/userPage/info}"
-                      th:object="${userPageInfoRequest}" method="POST">
-                    <div class="input-group form-group">
+                      th:object="${userPageInfoRequest}" method="PUT">
+                    <div class="input-group form-group" >
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="User Phone . . ." th:field="*{userPhone}">
+                        <input type="text" class="form-control" placeholder="User Phone . . ." th:field="*{userPhone}" >
 
                     </div>
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-mail-bulk"></i></span>
                         </div>
-                        <input type="password" class="form-control" placeholder="User Email . . ." th:field="*{userEmail}">
+                        <input type="text" class="form-control" placeholder="User Email . . ." th:field="*{userEmail}">
                     </div>
 <!--                    <div class="row align-items-center remember">-->
 <!--                        <input type="checkbox" >Remember Me-->
 <!--                    </div>-->
                     <div class="form-group">
-                        <input type="submit" value="LƯU" class="btn btn-outline-success login_btn">
+                        <input type="submit" value="LƯU" class="btn btn-outline-success login_btn mr-5">
+                        <a class="btn btn-primary" data-toggle="collapse" href="#collapsePassword" role="button" aria-expanded="false" aria-controls="collapsePassword">
+                            ĐỔI MẬT KHẨU
+                        </a>
+<!--                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsePassword" aria-expanded="false" aria-controls="collapsePassword">-->
+<!--                            Button with data-target-->
+<!--                        </button>-->
                     </div>
                 </form>
-                <form th:action="@{/userPage/info}"
-                      th:object="${userPageInfoRequest}" method="POST">
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-key"></i></span>
-                        </div>
-                        <input type="password" class="form-control" placeholder="Old Password . . ." th:field="*{userEmail}">
-                    </div>
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-key"></i></span>
-                        </div>
-                        <input type="password" class="form-control" placeholder="New Password . . ." th:field="*{userEmail}">
-                    </div>
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-key"></i></span>
-                        </div>
-                        <input type="password" class="form-control" placeholder="Confirm Password . . ." th:field="*{userEmail}">
-                    </div>
+                <div class="collapse" id="collapsePassword">
+                    <div class="card card-body">
+                        <form th:action="@{/userPage/info}"
+                              th:object="${userPasswordInfoRequest}" method="PUT">
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                <input type="password" class="form-control" placeholder="Old Password . . ." th:field="*{userOldPassword}" >
+                            </div>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                <input type="password" class="form-control" placeholder="New Password . . ." th:field="*{userNewPassword}">
+                            </div>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                <input type="password" class="form-control" placeholder="Confirm Password . . ." th:field="*{userConfirmPassword}">
+                            </div>
 
-                    <div class="form-group">
-                        <input type="submit" value="LƯU" class="btn btn-outline-success login_btn">
+                            <div class="form-group">
+                                <input type="submit" value="LƯU" class="btn btn-outline-success login_btn">
+                            </div>
+                            <div class="">
+                                <!--                        <button class="btn btn-outline-success login_btn">-->
+                            </div>
+                        </form>
                     </div>
-                    <div class="">
-                        <!--                        <button class="btn btn-outline-success login_btn">-->
-                    </div>
-                </form>
+                </div>
+
+
             </div>
             <div class="card-footer">
-                <div class="d-flex justify-content-center links" style="color: rgb(17, 235, 17);" th:utext="${messageLogin}" >
-                </div>
+                <div class="d-flex justify-content-center links" style="color: rgb(17, 235, 17);" th:utext="${messageLogin}" ></div>
             </div>
         </div>
 
