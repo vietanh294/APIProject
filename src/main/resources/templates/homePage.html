@@ -57,7 +57,7 @@
             <section id="main-section">
                 <form id="categoryForm"  th:action="@{/homePage}" th:object="${homeRequest}" method="POST">
                     <div class="container" style="margin-top: 40px;">
-                       <!--                        Pagination&ndash;&gt;-->
+                       <!--                        Pagination -->
                         <div>
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination ml-4" th:if="${homeRequest.totalPages > 1}">
@@ -105,8 +105,6 @@
                                     <option value="author">Tác giả</option>
                                     <option value="publishYear">Năm PH</option>
                                     <option value="price">Giá bán</option>
-<!--                                    <option th:each="category : ${listCategory}"-->
-<!--                                            th:value="${category.cateId}" th:text="${category.categoryName}"></option>-->
                                 </select>
                             </div>
                             <div >
@@ -147,24 +145,41 @@
                                 </div>
                             </div>
                         </div>
-                        <!--                        Pagination-->
-                        <div class="d-flex justify-content-end">
+                        <!--                        Pagination -->
+                        <div class=" d-flex justify-content-end">
                             <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
+                                <ul class="pagination ml-4" th:if="${homeRequest.totalPages > 1}">
+                                    <li class="page-item" th:if="${homeRequest.totalPages > 3}">
+                                        <input type="radio" onchange="homeRequestFunction()"  class="btn-check"  th:id="page-number-laquo"  autocomplete="off"
+                                               th:field="*{pageNumber}" th:value=1 >
+                                        <label  class="page-link"  th:for="page-number-laquo">&laquo;</label>
                                     </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                            <span class="sr-only">Next</span>
-                                        </a>
+                                    <li class="page-item" th:if="${homeRequest.totalPages > 3 && homeRequest.pageNumber >3}"><a class="page-link">...</a></li>
+                                    <li class="page-item" th:if="${homeRequest.pageNumber > 1}">
+                                        <input type="radio" onchange="homeRequestFunction()"  class="btn-check"  th:id="page-number-previous"  autocomplete="off"
+                                               th:field="*{pageNumber}" th:value="${homeRequest.pageNumber - 1}">
+                                        <label  class="page-link"  th:for="page-number-previous"><</label></li>
+
+                                    <span th:each="pageNum : ${pageNums}">
+                                        <li class="page-item">
+                                            <span th:class="${homeRequest.pageNumber == pageNum} ? font-weight-bold : '' ">
+                                                <input type="radio" onchange="homeRequestFunction()"  class="btn-check"  th:id="'page-number'+${pageNum}"  autocomplete="off"
+                                                       th:field="*{pageNumber}" th:value="${pageNum}">
+                                                <label  class="page-link" th:for="'page-number'+${pageNum}"
+                                                        th:text="${pageNum}">Page</label>
+                                            </span>
+                                        </li>
+                                    </span>
+                                    <li class="page-item" th:if="${homeRequest.pageNumber < homeRequest.totalPages}">
+                                        <input type="radio" onchange="homeRequestFunction()"  class="btn-check"  th:id="page-number-next"  autocomplete="off"
+                                               th:field="*{pageNumber}" th:value="${homeRequest.pageNumber + 1}">
+                                        <label  class="page-link"  th:for="page-number-next">></label></li>
+                                    <li class="page-item" th:if="${homeRequest.totalPages > 3 && homeRequest.pageNumber < homeRequest.totalPages -2}">
+                                        <label class="page-link" >...</label></li>
+                                    <li class="page-item" th:if="${homeRequest.totalPages > 3}">
+                                        <input type="radio" onchange="homeRequestFunction()"  class="btn-check"  th:id="page-number-raquo"  autocomplete="off"
+                                               th:field="*{pageNumber}" th:value="${homeRequest.totalPages}">
+                                        <label  class="page-link"  th:for="page-number-raquo">&raquo;</label>
                                     </li>
                                 </ul>
                             </nav>
