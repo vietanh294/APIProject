@@ -11,5 +11,6 @@ public class HomeRequest {
     private Integer categoryIde;
     private String orderBy = "title";
     private String direction = "ASC";
-    private Integer pageNumber = 0;
+    private Integer pageNumber = 1;
+    private Integer totalPages =0;
 }

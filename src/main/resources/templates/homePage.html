@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -46,7 +46,6 @@
                             <li class="nav-item"><a class="nav-link nav-link-item" href="./login">Login</a></li>
                             <li class="nav-item"><a class="nav-link" href="./register">Register</a></li>
                             <li class="nav-item"><a class="nav-link" href="./bookPage">Post</a></li>
-                            <li class="nav-item"><a class="nav-link disabled" href="./detailPage">Detail</a></li>
                             <li class="nav-item"><a class="nav-link" href="./userPage">User</a></li>
                         </ul>
                     </div>
@@ -58,29 +57,46 @@
             <section id="main-section">
                 <form id="categoryForm"  th:action="@{/homePage}" th:object="${homeRequest}" method="POST">
                     <div class="container" style="margin-top: 40px;">
-<!--                        Pagination-->
+                       <!--                        Pagination&ndash;&gt;-->
                         <div>
                             <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
+                                <ul class="pagination ml-4" th:if="${homeRequest.totalPages > 1}">
+                                    <li class="page-item" th:if="${homeRequest.totalPages > 3}">
+                                        <input type="radio" onchange="homeRequestFunction()"  class="btn-check"  th:id="page-number-laquo"  autocomplete="off"
+                                               th:field="*{pageNumber}" th:value=1 >
+                                        <label  class="page-link"  th:for="page-number-laquo">&laquo;</label>
                                     </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                            <span class="sr-only">Next</span>
-                                        </a>
+                                    <li class="page-item" th:if="${homeRequest.totalPages > 3 && homeRequest.pageNumber >3}"><a class="page-link">...</a></li>
+                                    <li class="page-item" th:if="${homeRequest.pageNumber > 1}">
+                                        <input type="radio" onchange="homeRequestFunction()"  class="btn-check"  th:id="page-number-previous"  autocomplete="off"
+                                                                 th:field="*{pageNumber}" th:value="${homeRequest.pageNumber - 1}">
+                                        <label  class="page-link"  th:for="page-number-previous"><</label></li>
+
+                                    <span th:each="pageNum : ${pageNums}">
+                                        <li class="page-item">
+                                            <span th:class="${homeRequest.pageNumber == pageNum} ? font-weight-bold : '' ">
+                                                <input type="radio" onchange="homeRequestFunction()"  class="btn-check"  th:id="'page-number'+${pageNum}"  autocomplete="off"
+                                                       th:field="*{pageNumber}" th:value="${pageNum}">
+                                                <label  class="page-link" th:for="'page-number'+${pageNum}"
+                                                    th:text="${pageNum}">Page</label>
+                                            </span>
+                                        </li>
+                                    </span>
+                                    <li class="page-item" th:if="${homeRequest.pageNumber < homeRequest.totalPages}">
+                                        <input type="radio" onchange="homeRequestFunction()"  class="btn-check"  th:id="page-number-next"  autocomplete="off"
+                                               th:field="*{pageNumber}" th:value="${homeRequest.pageNumber + 1}">
+                                        <label  class="page-link"  th:for="page-number-next">></label></li>
+                                    <li class="page-item" th:if="${homeRequest.totalPages > 3 && homeRequest.pageNumber < homeRequest.totalPages -2}">
+                                        <label class="page-link" >...</label></li>
+                                    <li class="page-item" th:if="${homeRequest.totalPages > 3}">
+                                        <input type="radio" onchange="homeRequestFunction()"  class="btn-check"  th:id="page-number-raquo"  autocomplete="off"
+                                               th:field="*{pageNumber}" th:value="${homeRequest.totalPages}">
+                                        <label  class="page-link"  th:for="page-number-raquo">&raquo;</label>
                                     </li>
                                 </ul>
                             </nav>
                         </div>
-<!--                        Pagination End-->
+                        <!--                        Pagination End-->
                         <div class=" d-flex justify-content-end align-items-center">
                             <div class="float-right d-flex align-items-center">
                                 <span class="text-secondary" style="font-size: 18px; font-family: Arial, Helvetica, sans-serif; font-weight: 500;">Sắp xếp:  </span>

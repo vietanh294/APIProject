@@ -20,22 +20,49 @@ public class HomeService {
     CategoryRepository categoryRepository;
 
     public List<BookEntity> runHomeService(HomeRequest homeRequest){
+        Integer pageSize =8;
         Sort sort = Sort.by(Sort.Direction.ASC,homeRequest.getOrderBy());
         if (homeRequest.getDirection().equals("DESC")){
             sort = Sort.by(Sort.Direction.DESC,homeRequest.getOrderBy());
         }
-        PageRequest pageRequest =PageRequest.of(homeRequest.getPageNumber(),8,sort);
+        PageRequest pageRequest =PageRequest.of(homeRequest.getPageNumber()-1,pageSize,sort);
         List<BookEntity>  homeBookForms = new ArrayList<>();
         if (homeRequest.getCategoryIde() == null){
-            homeBookForms = bookRepository.findAll();
+            homeBookForms =bookRepository.findAllBy(pageRequest);
         }else {
             homeBookForms = bookRepository.findAllByCategoryId(homeRequest.getCategoryIde(),  pageRequest);
         }
         return homeBookForms;
     }
-//    public HashMap<String,String> mapOrderByHomePage{
-//        return new HashMap<String,String>();
-//    }
 
+    public HomeRequest countTotalPages(HomeRequest homeRequest){
+        //      Tinh totalPage.
+        Integer pageSize =8;
+        double totalItemsCount;
+        if (homeRequest.getCategoryIde() == null){
+            totalItemsCount = bookRepository.countTotalItemsNativeQuery();
+        }else {
+            totalItemsCount = bookRepository.countTotalItemsByCategoryIdNativeQuery(homeRequest.getCategoryIde());
+        }
+        Integer totalPages=(int) Math.ceil(totalItemsCount/pageSize);
+        if (totalPages != null){
+            homeRequest.setTotalPages(totalPages);
+        }
+        return homeRequest;
+    }
+
+    public List<Integer> getPageNums(Integer currentPage, Integer totalPages){
+        List<Integer> pageNums =new ArrayList<>();
+        if(currentPage !=1){
+            Integer previousPage = currentPage-1;
+            pageNums.add(previousPage);
+        }
+        pageNums.add(currentPage);
+        if (currentPage!=totalPages){
+            Integer nextPage =currentPage +1;
+            pageNums.add(nextPage);
+        }
+        return pageNums;
+    }
 
 }

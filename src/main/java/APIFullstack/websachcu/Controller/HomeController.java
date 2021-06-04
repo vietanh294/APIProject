@@ -9,14 +9,14 @@ import APIFullstack.websachcu.Repository.CategoryRepository;
 
 import APIFullstack.websachcu.Service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+
+
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping(value = "/homePage")
@@ -33,38 +33,36 @@ public class HomeController {
 
     @GetMapping
     public String homePage(Model modelHomepage){
-        List<BookEntity>  homeBookForms = bookRepository.findAll();
+//        List<BookEntity>  homeBookForms = bookRepository.findAll();
         List<CategoryEntity> cateItems = categoryRepository.findAll();
-        UserFormSignedIn userFormSignedIn1=userFormSignedIn;
-        modelHomepage.addAttribute("homeRequest",new HomeRequest());
+        HomeRequest homeRequest = new HomeRequest();
+        List<BookEntity>  homeBookForms = homeService.runHomeService(homeRequest);
+        homeRequest =homeService.countTotalPages(homeRequest);
+        List<Integer> pageNums = homeService.getPageNums(homeRequest.getPageNumber(),homeRequest.getTotalPages());
+        modelHomepage.addAttribute("homeRequest",homeRequest);
         modelHomepage.addAttribute("homeBookForms", homeBookForms);
         modelHomepage.addAttribute("categoyItems",cateItems);
-        modelHomepage.addAttribute("userFormSignedIn1",userFormSignedIn1);
+        modelHomepage.addAttribute("userFormSignedIn1",userFormSignedIn);
+        modelHomepage.addAttribute("pageNums",pageNums);
+
         return "homePage";
     }
 
     @PostMapping
     public String homePage(Model modelHomepage,
                            @ModelAttribute("homeRequest") HomeRequest homeRequest2){
-
-//        Sort sort = Sort.by(Sort.Direction.ASC,homeRequest2.getOrderBy());
-//        if (homeRequest2.getVector().equals("DESC")){
-//            sort = Sort.by(Sort.Direction.DESC,homeRequest2.getOrderBy());
-//        }
-//        PageRequest pageRequest =PageRequest.of(homeRequest2.getPageNumber(),8,sort);
-//        List<BookEntity>  homeBookForms = new ArrayList<>();
-//        if (homeRequest2.getCategoryIde() == null){
-//            homeBookForms = bookRepository.findAll();
-//        }else {
-//            homeBookForms = bookRepository.findAllByCategoryId(homeRequest2.getCategoryIde(),  pageRequest);
-//        }
-        List<BookEntity> homeBookForms = homeService.runHomeService(homeRequest2);
         List<CategoryEntity> cateItems = categoryRepository.findAll();
+        List<BookEntity> homeBookForms = homeService.runHomeService(homeRequest2);
+        homeRequest2 =homeService.countTotalPages(homeRequest2);
+        if (homeRequest2.getPageNumber()>homeRequest2.getTotalPages()){
+            homeRequest2.setPageNumber(1);
+        }
         modelHomepage.addAttribute("homeRequest",homeRequest2);
         modelHomepage.addAttribute("homeBookForms", homeBookForms);
         modelHomepage.addAttribute("categoyItems",cateItems);
         modelHomepage.addAttribute("userFormSignedIn1",userFormSignedIn);
-
+        List<Integer> pageNums = homeService.getPageNums(homeRequest2.getPageNumber(),homeRequest2.getTotalPages());
+        modelHomepage.addAttribute("pageNums",pageNums);
         return "homePage";
     }
 }
