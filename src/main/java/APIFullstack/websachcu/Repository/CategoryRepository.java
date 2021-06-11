@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
+@Repository
 public interface CategoryRepository extends JpaRepository<CategoryEntity,Integer> {
     List<CategoryEntity> findAllByCateId(Integer cateId);
     @Query(nativeQuery = true, value = "SELECT category_name FROM category WHERE category_id =:CateId ")
