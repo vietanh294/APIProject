@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
+@Repository
 public interface UserRepository extends JpaRepository<UserEntity,Integer> {
     List<UserEntity> findAllByUserPhone(String hone);
     List<UserEntity> findAllByUserEmail(String email);
