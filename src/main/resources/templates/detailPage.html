@@ -22,13 +22,8 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container" >
-            <div class="user-bar"  th:object="${userFormSignedIn2}" method="GET">
-                <span>Username:</span>
-                <span th:text="${userFormSignedIn2.userSignedPhone}">ngovietanh</span>
-                <br>
-                <p class="text-center" style="margin-bottom: 0px;">Đăng xuất</p>
-                <!-- <span class="text-center">Đăng xuất</span> -->
-            </div>
+            <th:block th:include="/_uNameAndLogout"></th:block>
+
             <!-- <a class="navbar-brand" href="#!">Start Bootstrap</a> -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">

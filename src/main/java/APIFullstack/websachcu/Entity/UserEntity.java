@@ -23,4 +23,11 @@ public class UserEntity {
 
     @Column(name = "user_password")
     private String userPassword;
+
+    @Column(name = "role")
+    private String role;
+
+    @Column(name = "user_enable")
+    private String enable;
+
 }

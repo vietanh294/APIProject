@@ -5,6 +5,7 @@ import APIFullstack.websachcu.Controller.Request.RegisterRequest;
 import APIFullstack.websachcu.Entity.UserEntity;
 import APIFullstack.websachcu.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -16,6 +17,8 @@ import java.util.List;
 public class RegisterService {
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
 
 //    public String messageService = null;
 
@@ -45,7 +48,8 @@ public class RegisterService {
         UserEntity userEntity = new UserEntity();
         userEntity.setUserPhone(registerRequest.getUserPhone());
         userEntity.setUserEmail(registerRequest.getUserEmail());
-        userEntity.setUserPassword(registerRequest.getUserPass());
+        userEntity.setUserPassword(bCryptPasswordEncoder.encode(registerRequest.getUserPass()));
+        userEntity.setRole("ROLE_USER");
         userRepository.save(userEntity);
         return "Register Success";
     }

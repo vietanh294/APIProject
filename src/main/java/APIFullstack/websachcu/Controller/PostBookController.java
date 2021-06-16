@@ -2,9 +2,10 @@ package APIFullstack.websachcu.Controller;
 
 import APIFullstack.websachcu.Controller.Request.PostBookRequest;
 
-import APIFullstack.websachcu.Controller.Response.UserFormSignedIn;
+
 import APIFullstack.websachcu.Entity.CategoryEntity;
 import APIFullstack.websachcu.Repository.CategoryRepository;
+import APIFullstack.websachcu.Repository.UserRepository;
 import APIFullstack.websachcu.Service.PostBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -21,8 +23,10 @@ import java.util.List;
 public class PostBookController {
    @Autowired
    CategoryRepository categoryRepository;
-   @Autowired
-   UserFormSignedIn userFormSignedIn;
+//   @Autowired
+//   UserRepository userRepository;
+//   @Autowired
+//   UserFormSignedIn userFormSignedIn;
    @Autowired
    PostBookService postBookService;
    @GetMapping
@@ -30,20 +34,22 @@ public class PostBookController {
        List<CategoryEntity> listCategory = categoryRepository.findAll();
        modelPostBookPage.addAttribute("listCategory",listCategory);
        modelPostBookPage.addAttribute("postBookRequests",new PostBookRequest());
-       String userPhone = userFormSignedIn.getUserSignedPhone();
-       modelPostBookPage.addAttribute("userPhone",userPhone);
+//       String userPhone = userFormSignedIn.getUserSignedPhone();
+//       modelPostBookPage.addAttribute("userPhone",userPhone);
        return "bookPage";
    }
    @PostMapping
    public String postBookPage(Model modelPostBook,
+                              Principal principal,
                               @ModelAttribute("postBookRequests") PostBookRequest postBookRequest){
-      Integer userId = userFormSignedIn.getUserSignedId();
-      String userPhone =userFormSignedIn.getUserSignedPhone();
-      String runPostBookRequest = postBookService.runPostBookService(postBookRequest,userId);
+//      Integer userId = userFormSignedIn.getUserSignedId();
+//      String userPhone =userFormSignedIn.getUserSignedPhone();
+      String username =principal.getName();
+      String runPostBookRequest = postBookService.runPostBookService(postBookRequest,username);
       List<CategoryEntity> listCategory = categoryRepository.findAll();
       modelPostBook.addAttribute("listCategory",listCategory);
       modelPostBook.addAttribute("postBookRequests",postBookRequest);
-      modelPostBook.addAttribute("userPhone",userPhone);
+//      modelPostBook.addAttribute("userPhone",userPhone);
       String messageBookPage =null;
       if (runPostBookRequest =="bookPage"){
          messageBookPage = "Thiếu thông tin đăng sách";

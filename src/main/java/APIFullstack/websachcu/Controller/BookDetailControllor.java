@@ -1,6 +1,6 @@
 package APIFullstack.websachcu.Controller;
 
-import APIFullstack.websachcu.Controller.Response.UserFormSignedIn;
+
 import APIFullstack.websachcu.Entity.BookEntity;
 import APIFullstack.websachcu.Entity.PostedBookEntity;
 import APIFullstack.websachcu.Repository.BookRepository;
@@ -20,8 +20,8 @@ public class BookDetailControllor {
 
     @Autowired
     BookRepository bookRepository;
-    @Autowired
-    UserFormSignedIn userFormSignedIn;
+//    @Autowired
+//    UserFormSignedIn userFormSignedIn;
     @Autowired
     CategoryRepository categoryRepository;
     @Autowired
@@ -32,8 +32,8 @@ public class BookDetailControllor {
 ////Getmapping co RequestParam
     @GetMapping
     public String detailPage(Model modelDetailPageAndParam,@RequestParam("id") Integer bookId){
-        UserFormSignedIn userFormSignedIn3=userFormSignedIn;
-        modelDetailPageAndParam.addAttribute("userFormSignedIn2",userFormSignedIn3);
+//        UserFormSignedIn userFormSignedIn3=userFormSignedIn;
+//        modelDetailPageAndParam.addAttribute("userFormSignedIn2",userFormSignedIn3);
         BookEntity bookDetail =bookRepository.findByNativeQuery(bookId);
         modelDetailPageAndParam.addAttribute("detailBook",bookDetail);
 //      Category

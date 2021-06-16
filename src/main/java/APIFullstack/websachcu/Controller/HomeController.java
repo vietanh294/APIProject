@@ -1,7 +1,6 @@
 package APIFullstack.websachcu.Controller;
 import APIFullstack.websachcu.Controller.Request.HomeRequest;
 
-import APIFullstack.websachcu.Controller.Response.UserFormSignedIn;
 import APIFullstack.websachcu.Entity.BookEntity;
 import APIFullstack.websachcu.Entity.CategoryEntity;
 import APIFullstack.websachcu.Repository.BookRepository;
@@ -26,8 +25,8 @@ public class HomeController {
     BookRepository bookRepository;
     @Autowired
     CategoryRepository categoryRepository;
-    @Autowired
-    UserFormSignedIn userFormSignedIn;
+//    @Autowired
+//    UserFormSignedIn userFormSignedIn;
     @Autowired
     HomeService homeService;
 
@@ -42,7 +41,7 @@ public class HomeController {
         modelHomepage.addAttribute("homeRequest",homeRequest);
         modelHomepage.addAttribute("homeBookForms", homeBookForms);
         modelHomepage.addAttribute("categoyItems",cateItems);
-        modelHomepage.addAttribute("userFormSignedIn1",userFormSignedIn);
+//        modelHomepage.addAttribute("userFormSignedIn1",userFormSignedIn);
         modelHomepage.addAttribute("pageNums",pageNums);
 
         return "homePage";
@@ -60,7 +59,7 @@ public class HomeController {
         modelHomepage.addAttribute("homeRequest",homeRequest2);
         modelHomepage.addAttribute("homeBookForms", homeBookForms);
         modelHomepage.addAttribute("categoyItems",cateItems);
-        modelHomepage.addAttribute("userFormSignedIn1",userFormSignedIn);
+//        modelHomepage.addAttribute("userFormSignedIn1",userFormSignedIn);
         List<Integer> pageNums = homeService.getPageNums(homeRequest2.getPageNumber(),homeRequest2.getTotalPages());
         modelHomepage.addAttribute("pageNums",pageNums);
         return "homePage";
