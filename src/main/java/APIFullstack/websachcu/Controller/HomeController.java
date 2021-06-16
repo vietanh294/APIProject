@@ -25,8 +25,6 @@ public class HomeController {
     BookRepository bookRepository;
     @Autowired
     CategoryRepository categoryRepository;
-//    @Autowired
-//    UserFormSignedIn userFormSignedIn;
     @Autowired
     HomeService homeService;
 

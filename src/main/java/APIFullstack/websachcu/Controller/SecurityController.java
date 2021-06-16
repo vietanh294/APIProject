@@ -15,9 +15,9 @@ public class SecurityController{
 
     @GetMapping(value = {"/","/welcome"})
     public String welcome(Model model){
-        model.addAttribute("title", "Xin chao");
-        model.addAttribute("message", "Day la welcome Page");
-        return "homePage";
+//        model.addAttribute("title", "Xin chao");
+//        model.addAttribute("message", "Day la welcome Page");
+        return "redirect:/homePage";
     }
     @GetMapping("/userInfo")
     public String userInfo(Model model, Principal principal){
@@ -47,7 +47,7 @@ public class SecurityController{
         return "logout";
     }
     @RequestMapping(value = "/403", method = RequestMethod.GET)
-    public String logoutSuccessfulPage(Model model,Principal principal){
+    public String donothavePermissionPage(Model model,Principal principal){
         if (principal != null){
             User loginedUser = (User) ((Authentication) principal).getPrincipal();
             String userInfo =loginedUser.toString();
@@ -60,7 +60,7 @@ public class SecurityController{
     @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
     public String logoutSuccessfulPage2(Model model){
         model.addAttribute("title","Logout");
-        return "homePage";
+        return "redirect:/homePage";
     }
 
 }
