@@ -33,7 +33,12 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container" >
-            <th:block th:include="/_uNameAndLogout"></th:block>
+            <div th:if="${#request.userPrincipal != null}"class="user-bar">
+                <span>Username:</span>
+                <span th:utext="${#request.userPrincipal.name}"></span>
+                <br>
+                <p class="text-center" style="margin-bottom: 0px;"><a th:href="@{/logout}">Đăng xuất</a></p>
+            </div>
 
             <!-- <a class="navbar-brand" href="#!">Start Bootstrap</a> -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>

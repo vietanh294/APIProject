@@ -31,8 +31,11 @@
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container" >
-                    <div th:if="${#request.userPrincipal != null}" >
-                        <th:block th:include="/_uNameAndLogout"></th:block>
+                    <div th:if="${#request.userPrincipal != null}" class="user-bar">
+                        <span>Username:</span>
+                        <span th:utext="${#request.userPrincipal.name}"></span>
+                        <br>
+                        <p class="text-center" style="margin-bottom: 0px;"><a th:href="@{/logout}">Đăng xuất</a></p>
                     </div>
 
                     <!-- <a class="navbar-brand" href="#!">Start Bootstrap</a> -->
