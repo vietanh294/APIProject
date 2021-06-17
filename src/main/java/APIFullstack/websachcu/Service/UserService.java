@@ -5,6 +5,7 @@ import APIFullstack.websachcu.Controller.Response.UserPagePostedResponse;
 import APIFullstack.websachcu.Entity.BookEntity;
 import APIFullstack.websachcu.Entity.CollectionEntity;
 import APIFullstack.websachcu.Entity.PostedBookEntity;
+import APIFullstack.websachcu.Entity.UserEntity;
 import APIFullstack.websachcu.Repository.BookRepository;
 import APIFullstack.websachcu.Repository.CollectionRepository;
 
@@ -67,4 +68,17 @@ public class UserService {
         return userPagePostedResponseList;
     }
 
+    public String putUserInfo(String userName, String updatePhone, String updateEmail){
+        if (updatePhone.length() <10){
+            return "Số điện thoại không hợp lệ!";
+        }
+        if (updateEmail.contains("@gmail.com")==false){
+            return "Email không hợp lệ";
+        }
+        UserEntity userEntity = userRepository.findAllByUserPhone(userName);
+        userEntity.setUserPhone(updatePhone);
+        userEntity.setUserEmail(updateEmail);
+        userRepository.save(userEntity);
+        return "Lưu thành công!";
+    }
 }

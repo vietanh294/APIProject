@@ -53,7 +53,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>VietAnh15</finalName>
+		<finalName>VietAnh16</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

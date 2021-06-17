@@ -49,11 +49,12 @@ public class HomeController {
     public String homePage(Model modelHomepage,
                            @ModelAttribute("homeRequest") HomeRequest homeRequest2){
         List<CategoryEntity> cateItems = categoryRepository.findAll();
-        List<BookEntity> homeBookForms = homeService.runHomeService(homeRequest2);
         homeRequest2 =homeService.countTotalPages(homeRequest2);
         if (homeRequest2.getPageNumber()>homeRequest2.getTotalPages()){
             homeRequest2.setPageNumber(1);
         }
+        List<BookEntity> homeBookForms = homeService.runHomeService(homeRequest2);
+
         modelHomepage.addAttribute("homeRequest",homeRequest2);
         modelHomepage.addAttribute("homeBookForms", homeBookForms);
         modelHomepage.addAttribute("categoyItems",cateItems);

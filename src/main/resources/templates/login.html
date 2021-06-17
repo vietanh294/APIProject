@@ -82,6 +82,17 @@
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links" style="color: rgb(17, 235, 17);" th:utext="${messageLogin}" >
 				</div>
+				<!-- /login?error=true -->
+				<div th:if="${#request.getParameter('error') == 'true'}"
+					 style="color:red;margin:10px 0px;">
+					Login Failed!!!<br />
+					Reason :
+					<span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
+						  th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
+                	Static summary
+         			</span>
+
+				</div>
 				<div class="d-flex justify-content-center links">
 					Don't have an account?<a href="./register">Sign Up</a>
 				</div>

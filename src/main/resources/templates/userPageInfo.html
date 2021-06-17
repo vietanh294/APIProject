@@ -78,8 +78,8 @@
 <!--                </div>-->
             </div>
             <div class="card-body" >
-                <form th:action="@{/userPage/info}"
-                      th:object="${userPageInfoRequest}" method="PUT">
+                <form th:action="@{/userPageInfo}"
+                      th:object="${userPageInfoRequest}" method="POST">
                     <div class="input-group form-group" >
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>

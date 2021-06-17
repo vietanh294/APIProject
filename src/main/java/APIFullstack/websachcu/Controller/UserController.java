@@ -36,12 +36,6 @@ public class UserController {
                                Principal principal){
         String username =principal.getName();
         UserEntity userEntity = userRepository.findAllByUserPhone(username);
-//        String userPhone =userFormSignedIn.getUserSignedPhone();
-//        modelUserPageInfo.addAttribute("userPhone",userPhone);
-//        String userEmail =userFormSignedIn.getUserSignedEmail();
-//        UserEntity userEntity =new UserEntity();
-//        userEntity.setUserPhone(userPhone);
-//        userEntity.setUserEmail(userEmail);
         modelUserPageInfo.addAttribute("userPageInfoRequest",userEntity);
         modelUserPageInfo.addAttribute("userPasswordInfoRequest", new UserPasswordInfoRequest());
         return "userPageInfo";
@@ -82,6 +76,7 @@ public class UserController {
     }
 //    @PutMapping(value = "/collection")
 //    public String userUnlikeBookCollection(Model modelUserUnlikeBookCollection,
+//                                           Principal principal,
 //                                           @ModelAttribute("userPageCollectionRequest")CollectionEntity userPageCollectionRequest,
 ////                                           @ModelAttribute("userPageCollectionResponseList")List<UserPageCollectionResponse> userPageCollectionResponseList,
 //                                           @ModelAttribute("userPhone")String userPhone){
@@ -94,4 +89,5 @@ public class UserController {
 //        modelUserUnlikeBookCollection.addAttribute("userPhone",userPhone);
 //        return "userPageCollection";
 //    }
+
 }

@@ -37,7 +37,11 @@ public class PostBookService {
     bookEntity.setAuthor(postBookRequest.getAuthor().trim());
     bookEntity.setCategoryId(postBookRequest.getCategoryId());
     bookEntity.setDescription(postBookRequest.getDescription().trim());
-    bookEntity.setPicture(postBookRequest.getPicture().trim());
+    if (postBookRequest.getPicture() == null || postBookRequest.getPicture() == ""){
+        bookEntity.setPicture("https://cdn.vietnambiz.vn/thumb_w/600/2019/9/7/global-economy-07-05-2019-min-1567865814459102834293-crop-15678658965781400438761.jpg");
+    } else{
+        bookEntity.setPicture(postBookRequest.getPicture().trim());
+    }
     bookEntity.setPublishYear(postBookRequest.getPublishYear().trim());
     bookEntity.setPrice(postBookRequest.getPrice());
 //    bookEntity.setContact(userphone);
