@@ -17,14 +17,14 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link th:href="@{../css/styles.css}" rel="stylesheet" />
     <link rel="stylesheet"  th:href="@{../css/home.css}">
-    <!--    <style>-->
-    <!--    .input-group-text{width: 50px;display: flex; justify-content: center;}-->
-    <!--    </style>-->
+    <style>
+    .btn-outline-primary{border-radius: 0px !important;margin-bottom: -1px; }
+    </style>
 </head>
 <body>
 <header>
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-white">
         <div class="container" >
             <div th:if="${#request.userPrincipal != null}"class="user-bar">
                 <span>Username:</span>
@@ -128,7 +128,13 @@
                     <!--                            </div>-->
 
                     <div class="form-group">
-                        <div class="card-footer"><a class="btn btn-outline-primary mr-4" th:href="@{../detailPage(id=${userPagePostedResponse.bookId})}" >Chi tiết Sách!</a><span><input type="submit" value="LƯU" class="btn btn-outline-primary"></span></div>
+                        <div class="card-footer">
+<!--                            <input type="hidden" th:value="${userPagePostedResponse.bookId}">-->
+                            <a class="btn btn-outline-primary mr-4" th:href="@{../detailPage(id=${userPagePostedResponse.bookId})}" >Chi tiết Sách!</a>
+                            <span>
+                            <input type="submit" value="LƯU" class="btn btn-outline-primary">
+                            </span>
+                        </div>
 
 
 
@@ -150,7 +156,7 @@
 </main>
 
 <!-- Footer-->
-<footer class="py-5 bg-dark">
+<footer class="py-5 bg-white">
     <div class="container background-opacity">
         <p class="m-0 text-center text-white">Copyright © Sách cũ 2021!</p></div>
 </footer>

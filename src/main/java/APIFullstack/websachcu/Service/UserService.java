@@ -76,6 +76,17 @@ public class UserService {
             return "Email không hợp lệ";
         }
         UserEntity userEntity = userRepository.findAllByUserPhone(userName);
+        //
+//        System.out.println(userEntity.getUserPhone());
+//        System.out.println(updatePhone);
+//        System.out.println(userEntity.getUserEmail());
+//        System.out.println(updateEmail);
+//        boolean a = updatePhone.equals(userEntity.getUserPhone());
+//        System.out.println(a);
+        //
+        if (userEntity.getUserPhone().equals(updatePhone )&& userEntity.getUserEmail().equals(updateEmail)){
+            return  "Không thay đổi!";
+        }
         userEntity.setUserPhone(updatePhone);
         userEntity.setUserEmail(updateEmail);
         userRepository.save(userEntity);

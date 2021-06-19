@@ -17,9 +17,9 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link th:href="@{../css/styles.css}" rel="stylesheet" />
     <link rel="stylesheet"  th:href="@{../css/home.css}">
-    <!--    <style>-->
-    <!--    .input-group-text{width: 50px;display: flex; justify-content: center;}-->
-    <!--    </style>-->
+    <style>
+    .btn-outline-primary{border-radius: 0px !important;margin-bottom: -1px; }
+    </style>
     <!--   Auto Submit Onchange Script....   onclick-->
     <script>
              function autoSubmitFunction() {
@@ -31,7 +31,7 @@
 <body>
 <header>
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-white">
         <div class="container" >
             <div th:if="${#request.userPrincipal != null}"class="user-bar">
                 <span>Username:</span>
@@ -153,7 +153,7 @@
     </section>
 </main>
 
-<footer class="py-5 bg-dark">
+<footer class="py-5 bg-white">
     <div class="container background-opacity">
         <p class="m-0 text-center text-white">Copyright © Sách cũ 2021!</p></div>
 </footer>
